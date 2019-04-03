@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>WebStorage (Веб хранилища)</title>
+
+   <script type="text/javascript">
+      function init(){
+         
+         window.localStorage.key1 = "value 1";
+         window.localStorage.key2 = 'value 2';
+         window.localStorage.key3 = 'value 3';
+         window.localStorage.key4 = 'value 4';
+         window.localStorage.key5 = 'value 5';g
+         window.localStorage.key6 = 'value 6';
+
+         ShowStorage();         
+         
+         function ShowStorage(){
+            var output = document.getElementById("output");
+            output.innerHTML = "Количество записей:  " + window.localStorage.length + "<br/>";
+            output.innerHTML += "Все ключи в LocalStorage:" + "<br/>";
+            for (i = 0; i < window.localStorage.length; i++){
+               output.innerHTML += window.localStorage[localStorage.key(i)] + "<br/>";
+            }
+            output.innerHTML += "<br/>";
+         }
+         document.getElementById("deleteStorage").onclick = function(){
+            window.localStorage.clear(); // Удаление всех ключей
+            ShowStorage();
+         }
+         document.getElementById("deletekey").onclick = function(){
+            window.localStorage.removeItem("key3"); //   Удаление ключа 3
+            ShowStorage();
+         }                  
+      }
+      if (window.addEventListener)
+      window.addEventListener("load", init, false);
+   </script>
+
+</head>
+<body style="padding: 10px">
+   <input type="button" id="deleteStorage" value="Удалить localStorage">
+   <input type="button" id="deletekey" value="Удалить key3">
+   <div id="output"></div>
+</body>
+</html>
